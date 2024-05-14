@@ -15,7 +15,7 @@ const Meal = () => {
 
   return (
     <div>
-        <img ></img>
+        <p>Tuna wrap</p>
         <p>300 cals</p>
         <p>30g protein</p>
         <div id="favoriteDiv">

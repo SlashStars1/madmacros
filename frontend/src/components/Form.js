@@ -31,7 +31,7 @@ function proteinHandler(event){
             <option value="Culvers">Culvers</option>
             </select>
             </div>
-            <div>
+            <div id="largerdiv">
             <div>
                 <label>Enter a calorie limit</label> &nbsp;
                 <input type="number" placeholder='500'  value={cals} onChange={calorieHandler}></input> cals
