@@ -2,8 +2,7 @@ import React from 'react'
 import { FaRegHeart } from "react-icons/fa6";
 import { FaHeart } from "react-icons/fa6";
 
-const Meal = () => {
-
+const Meal = (name, image, calories, protein) => {
     function favoriteHandler(){
         //change open heart to filled in heart
        document.querySelector("#openHeart").replaceWith()

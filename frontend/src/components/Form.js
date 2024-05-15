@@ -4,13 +4,11 @@ import AuthContext from './store/auth-context';
 
 const Form = () => {
 
-    
-  const { cals, setCals, protein, setProtein, food, setFood } = useContext(AuthContext);
-
-  
+  const { cals, setCals, protein, setProtein, food, setFood, submitted, setSubmitted } = useContext(AuthContext); //gets context
 
 function submitHandler(event) {
     event.preventDefault() //prevents page from automatically refreshing 
+    setSubmitted(true) //sets the submitted context value to true
     console.log(cals)
     console.log(protein)
     console.log(food)
