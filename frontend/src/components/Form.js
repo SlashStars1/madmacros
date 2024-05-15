@@ -1,52 +1,54 @@
-import React,{useState} from 'react'
+import React,{useContext} from 'react'
 import "./Form.css"
+import AuthContext from './store/auth-context';
+
 const Form = () => {
-    
-const [cals, setCals]= useState(500);
-const [protein, setProtein] = useState(30);
 
-function submitHandler() {
     
-}
+  const { cals, setCals, protein, setProtein, food, setFood } = useContext(AuthContext);
 
-function calorieHandler(event){
-   setCals(event.target.value);
-    
-}
+  
 
-function proteinHandler(event){
-    setProtein(event.target.value);
+function submitHandler(event) {
+    event.preventDefault() //prevents page from automatically refreshing 
+    console.log(cals)
+    console.log(protein)
+    console.log(food)
 }
 
   return (
+   
+
     <div>
-        <form>
+        <form onSubmit={submitHandler}>
 
             <div>
             <label>Select a restaraunt/cuisine</label>&nbsp;
-            <select id="restaraunt/cuisine">
+            <select id="restaraunt/cuisine" value={food} onChange={(event) => setFood(event.target.value)}>
+            <option value="Panera Bead">Panera Bread</option>
             <option value="Qdoba">Qdoba</option>
             <option value="Chipotle">Chipotle</option>
-            <option value="Panera Bead">Panera Bread</option>
+           
             <option value="Culvers">Culvers</option>
             </select>
             </div>
             <div id="largerdiv">
             <div>
                 <label>Enter a calorie limit</label> &nbsp;
-                <input type="number" placeholder='500'  value={cals} onChange={calorieHandler}></input> cals
+                <input type="number" placeholder='500'  value={cals} onChange={(event) => setCals(event.target.value)}></input> cals
             </div>
 
             <div>
                 <label>Enter a protein goal</label>&nbsp;
-                <input type="number" placeholder='30'  value={protein} onChange={proteinHandler}></input> g
+                <input type="number" placeholder='30'  value={protein} onChange={(event) => setProtein(event.target.value)}></input> g
             </div>
             </div>
 
-            <button type="submit" onClick={submitHandler}>Find meals</button>
+            <button type="submit" >Find meals</button>
         </form>
 
     </div>
+    
   )
 }
 

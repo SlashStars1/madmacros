@@ -1,7 +1,7 @@
 
 div{
     display: flexbox;
-    padding: 1%;
+    padding: .75%;
     justify-content: space-between;
     
 }
@@ -11,4 +11,7 @@ button{
     display: flexbox;
     background-color: orange;
     border-radius: 10px;
+    cursor: pointer;
+    padding: 1%;
+    
 }

@@ -1,0 +1,9 @@
+FaRegHeart{
+    color:red;
+    background-color: red;
+}
+
+.meal-container{
+    display: flex;
+    padding: .2%;
+}

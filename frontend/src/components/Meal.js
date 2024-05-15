@@ -14,10 +14,11 @@ const Meal = () => {
     }
 
   return (
-    <div>
-        <p>Tuna wrap</p>
-        <p>300 cals</p>
-        <p>30g protein</p>
+    <div className="meal-container">
+        <img src='' alt=""></img>
+        <p>Tuna wrap
+        <br></br>300 cals
+        <br></br>30g protein</p>
         <div id="favoriteDiv">
         <FaRegHeart id="openHeart" onClick={favoriteHandler} />
         </div>
