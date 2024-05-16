@@ -12,6 +12,9 @@ function submitHandler(event) {
     console.log(cals)
     console.log(protein)
     console.log(food)
+
+
+
 }
 
   return (

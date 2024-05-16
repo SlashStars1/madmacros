@@ -1,0 +1,37 @@
+body{
+    font-family: 'Trebuchet MS', sans-serif;
+    padding: 0px;
+    
+}
+
+
+.column{
+    display: flex;
+    flex-direction: column;
+    flex-basis: 100%;
+    flex: 1;
+    height: 60vh;
+    width: 50%;
+    object-fit: cover;
+}
+.row{
+    display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+  
+}
+
+#divOne{
+    display: flex;
+    object-fit:cover;
+    overflow: hidden;
+}
+
+#divTwo{
+    background-color: black;
+    
+    align-items: center;
+    justify-content: center;
+
+}

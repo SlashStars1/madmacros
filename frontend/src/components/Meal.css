@@ -5,5 +5,11 @@ FaRegHeart{
 
 .meal-container{
     display: flex;
+    flex-direction: column;
     padding: .2%;
+    width: 30%;
+}
+
+#scrambledEggBriocheImg{
+    border-radius: 3%;
 }

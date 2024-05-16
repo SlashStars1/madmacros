@@ -1,7 +1,23 @@
 
-const csv = require('csv-parser')
-const fs = require('fs')
-const results = [];
+
+const csv = require('csv-parser') //node package to parse csv
+const fs = require('fs') //file system package
+const results = []; //array to store our objects in the format: {Name: , Serving Size Description: , Calories: , Protein (g): }
+
+const express = require('express'); //express 
+const app = express();
+
+const port = 5000; //Because the Frontend uses 3000 as it's default port
+
+
+//TO DO: Method to handle form submission request 
+
+
+//listens to port 
+app.listen(port, () => {
+    console.log(`Server is running on port number ${port}`);
+  });
+
 
 //Function that will parse a given csv for protein, cals, and name
 function parsecsvFile(csvPath, cals, protein){
@@ -28,7 +44,7 @@ function parsecsvFile(csvPath, cals, protein){
    console.log("success");
      
   });
-  
+  return results
 }
 
 //function call

@@ -1,6 +1,7 @@
 
 div{
     display: flexbox;
+    padding-top: 7%;
     padding: .75%;
     justify-content: space-between;
     
