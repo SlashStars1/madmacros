@@ -3,10 +3,12 @@
 const csv = require('csv-parser') //node package to parse csv
 const fs = require('fs') //file system package
 const results = []; //array to store our objects in the format: {Name: , Serving Size Description: , Calories: , Protein (g): }
+const cors = require('cors');
+
 
 const express = require('express'); //express 
 const app = express();
-
+app.use(cors());
 const port = 5000; //Because the Frontend uses 3000 as it's default port
 
 
@@ -48,4 +50,18 @@ function parsecsvFile(csvPath, cals, protein){
 }
 
 //function call
-parsecsvFile('panera-bread.csv', 400, 20)
+//parsecsvFile('panera-bread.csv', 400, 20)
+
+app.get('/', (req, res) => {
+
+    const results = parsecsvFile('panera-bread.csv', 400, 20)
+    res.type('text')
+    res.format({
+        text: function () {
+         res.send( results)
+          //res.send('Hello from the Node.js backend!');
+        }
+      })
+    
+  
+});
