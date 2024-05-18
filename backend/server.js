@@ -1,9 +1,6 @@
 const csv = require('csv-parser') //node package to parse csv
 const fs = require('fs') //file system package
-const results = []; //array to store our objects in the format: {Name: , Serving Size Description: , Calories: , Protein (g): }
 const cors = require('cors');
-
-
 const express = require('express'); //express 
 const app = express();
 app.use(cors());
@@ -17,11 +14,12 @@ app.get('/',  async (req, res) => {
     console.log("cals: " + req.query.cals)
     console.log("food: " + req.query.food)
     let array;
-    if (String(req.query.food)==="Panera Bread"){
-      array = await parsecsvFile('panera-bread.csv', Number(req.query.cals), Number(req.query.food))
+    if (req.query.food==="Panera Bread"){
+      array = await parsecsvFile('panera-bread.csv', Number(req.query.cals), Number(req.query.protein))
       console.log("finished")
-    }
 
+      
+    console.log(array)
     //const array = await parsecsvFile('panera-bread.csv', 300, 10)
     res.type('json')
     res.format({
@@ -29,6 +27,8 @@ app.get('/',  async (req, res) => {
          res.send(array);
         }
       })
+    }
+
   }
   catch (error){
     console.error("Error processing CSV file:", error);
