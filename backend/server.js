@@ -1,5 +1,3 @@
-
-
 const csv = require('csv-parser') //node package to parse csv
 const fs = require('fs') //file system package
 const results = []; //array to store our objects in the format: {Name: , Serving Size Description: , Calories: , Protein (g): }
@@ -12,7 +10,33 @@ app.use(cors());
 const port = 5000; //Because the Frontend uses 3000 as it's default port
 
 
-//TO DO: Method to handle form submission request 
+app.get('/',  async (req, res) => {
+  try {
+    //prints out the request query parameters
+    console.log("protein: " + req.query.protein)
+    console.log("cals: " + req.query.cals)
+    console.log("food: " + req.query.food)
+    let array;
+    if (String(req.query.food)==="Panera Bread"){
+      array = await parsecsvFile('panera-bread.csv', Number(req.query.cals), Number(req.query.food))
+      console.log("finished")
+    }
+
+    //const array = await parsecsvFile('panera-bread.csv', 300, 10)
+    res.type('json')
+    res.format({
+       json: function () {
+         res.send(array);
+        }
+      })
+  }
+  catch (error){
+    console.error("Error processing CSV file:", error);
+    res.status(500).send("Failed to process CSV file");
+  }
+ 
+
+});
 
 
 //listens to port 
@@ -23,6 +47,8 @@ app.listen(port, () => {
 
 //Function that will parse a given csv for protein, cals, and name
 function parsecsvFile(csvPath, cals, protein){
+  return new Promise((resolve, reject) => {
+    const results = [];
     fs.createReadStream(csvPath)
   .pipe(csv({
     mapHeaders: ({ header}) => {
@@ -42,26 +68,12 @@ function parsecsvFile(csvPath, cals, protein){
     }}
 ) 
   .on('end', () => {
-    console.log(results);
+    resolve(results);
    console.log("success");
-     
-  });
-  return results
+  })
+  .on('error', (error) => {
+    reject(error);
+});
+});
 }
 
-//function call
-//parsecsvFile('panera-bread.csv', 400, 20)
-
-app.get('/', (req, res) => {
-
-    const results = parsecsvFile('panera-bread.csv', 400, 20)
-    res.type('text')
-    res.format({
-        text: function () {
-         res.send( results)
-          //res.send('Hello from the Node.js backend!');
-        }
-      })
-    
-  
-});

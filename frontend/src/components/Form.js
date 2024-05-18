@@ -6,25 +6,6 @@ const Form = () => {
 
   const { cals, setCals, protein, setProtein, food, setFood, meals, setMeals, submitted, setSubmitted } = useContext(AuthContext); //gets context
 
-  useEffect(() => {
-    const form = document.getElementById("form"); //gets form element using js
-    const submitter = document.getElementById("submitter"); //gets submit button element using js
-    const formData = new FormData(form, submitter ); //creates form data object to send to server using the form and submit button  
-    const options = {
-        body: formData,
-    };
-   ///const myRequest = new Request('http://localhost:5000/', options);
-   const myRequest = new Request('http://localhost:5000/');
-    // Fetch data from the backend
-    fetch(myRequest)
-      .then((response) => response.text())
-      .then((data) => {
-        setMeals(data);
-      });
-      console.log(meals);
-  }, [submitted]);
-
-  
 
 function submitHandler(event) {
     event.preventDefault() //prevents page from automatically refreshing 
@@ -32,6 +13,25 @@ function submitHandler(event) {
     console.log(cals)
     console.log(protein)
     console.log(food)
+
+    
+   ///request using query string
+   const myRequest = new Request(`http://localhost:5000/?cals=${cals}&protein=${protein}&food=${food}`);
+   // Fetch data from the backend
+  
+   fetch(myRequest)
+     .then((response) => response.json())
+     .then((data) => {
+       setMeals(data);
+       console.log(meals);
+     })
+     .catch((error) => {
+       console.log(error)
+     });
+    
+     
+  
+
 }
 
   return (
