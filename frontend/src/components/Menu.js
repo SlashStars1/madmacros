@@ -13,17 +13,18 @@ const Menu = () => {
   
 //NOTE: Capitalization DOES matter: notice meal.calories will pass an empty prop but meal.Calories will correctly pass it
   return (
-    <Grid container spacing={2}>
-        {(submitted && meals.length > 0)? (meals.map((meal)=> 
-        <Grid xs={4}>
-        <Meal key={meal.Name} 
-        name={meal.Name} protein={meal["Protein (g)"]} calories={meal.Calories} serving=
-        {meal["Serving Size Description"]} />
-        </Grid>
+   <div>
+        {(meals.length > 0)? (meals.map((meal)=> 
         
-        )) : <p></p>}
-    
-    </Grid>
+        <Meal key={meal.Name} 
+        name={meal.Name} food={food} protein={meal["Protein (g)"]} calories={meal.Calories} serving=
+        {meal["Serving Size Description"]} />
+       
+        
+        )) : <p> </p>} 
+        {(meals.length === 0 && submitted===true)? <p>We found no results with this macro combo</p> :<p></p>}
+      
+      </div>
   )
 }
 

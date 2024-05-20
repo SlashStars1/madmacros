@@ -1,4 +1,5 @@
 const csv = require('csv-parser') //node package to parse csv
+const { getJson } = require("serpapi"); //api to search for and get an image based on a description 
 const fs = require('fs') //file system package
 const cors = require('cors');
 const express = require('express'); //express 
@@ -14,29 +15,53 @@ app.get('/',  async (req, res) => {
     console.log("cals: " + req.query.cals)
     console.log("food: " + req.query.food)
     let array;
-    if (req.query.food==="Panera Bread"){
-      array = await parsecsvFile('panera-bread.csv', Number(req.query.cals), Number(req.query.protein))
-      console.log("finished")
+    let csvName;
 
-      
-    console.log(array)
-    //const array = await parsecsvFile('panera-bread.csv', 300, 10)
-    res.type('json')
-    res.format({
-       json: function () {
-         res.send(array);
-        }
-      })
+    switch (req.query.food){
+      case "Panera Bread": 
+        csvName = "panera-bread.csv";
+        break;
+      case "Chic Fil A":
+        csvName = "chick-fil-a.csv";
+        break;
+      case "Chipotle":
+        csvName = "chipotle.csv"
+        break;
+      case "Ihop":
+        csvName = "ihop.csv"
+        break;
+      case "Jamba":
+        csvName = "jamba.csv"
+        break;
+      case "Shake Shack":
+        csvName = "shake-shack.csv"
+        break;
+      case "Halal Guys":
+        csvName = "the-halal-guys.csv"
+        break;
     }
-
-  }
-  catch (error){
+    array = await parsecsvFile(csvName, Number(req.query.cals), Number(req.query.protein))
+    res.type('json')
+    res.json(array)
+   }
+   catch (error) {
     console.error("Error processing CSV file:", error);
     res.status(500).send("Failed to process CSV file");
   }
+  
  
+ } 
+  
+  );
 
-});
+
+
+  
+ 
+    
+
+  
+ 
 
 
 //listens to port 

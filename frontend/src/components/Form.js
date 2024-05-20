@@ -28,9 +28,6 @@ function submitHandler(event) {
      .catch((error) => {
        console.log(error)
      });
-    
-     
-  
 
 }
 
@@ -41,11 +38,13 @@ function submitHandler(event) {
             <div>
             <label>Select a restaraunt/cuisine</label>&nbsp;
             <select id="restaraunt/cuisine" value={food} onChange={(event) => setFood(event.target.value)}>
-            <option value="Panera Bead">Panera Bread</option>
-            <option value="Qdoba">Qdoba</option>
+            <option value="Panera Bread">Panera Bread</option>
+            <option value="Chic Fil A">Chic Fil A</option>
             <option value="Chipotle">Chipotle</option>
-           
-            <option value="Culvers">Culvers</option>
+            <option value="Ihop">Ihop</option>
+            <option value="Jamba">Jamba</option>
+            <option value="Shake Shack">Shake Shack</option>
+            <option value="Halal Guys">Halal Guys</option>
             </select>
             </div>
             <div id="largerdiv">

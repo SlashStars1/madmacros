@@ -15,7 +15,7 @@ function App() {
   return (
     <AuthContextProvider>
     <div className="App">
-    
+    <NavBar></NavBar>
 <Form></Form>
 <Menu></Menu>
     </div>

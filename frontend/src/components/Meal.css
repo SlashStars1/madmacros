@@ -5,10 +5,17 @@ FaRegHeart{
 
 .meal-container{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    border-width: 20px;
+    border-color: black;
+    border-radius: 2%;
+    padding-left: 2%;
     
 }
 
-.meal-image{
-    border-radius: 3%;
+.meal-name{
+    display: flex;
+    width: 30%;
+    flex-wrap: wrap;
+    text-align: left;
 }
