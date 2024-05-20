@@ -4,7 +4,7 @@ import Form from './components/Form';
 import Menu from './components/Menu';
 import NavBar from './components/NavBar';
 import React, {useState, useEffect} from "react";
-
+import Header from "./components/Header/Header";
 import {AuthContextProvider} from './components/store/auth-context';
 
 function App() {
@@ -16,6 +16,7 @@ function App() {
     <AuthContextProvider>
     <div className="App">
     <NavBar></NavBar>
+    <Header></Header>
 <Form></Form>
 <Menu></Menu>
     </div>

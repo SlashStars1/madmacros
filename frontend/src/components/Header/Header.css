@@ -1,0 +1,20 @@
+.header{
+
+    height: 34vw;
+    margin: 30px auto;
+    background: url(../../assets/pancakes.jpg) no-repeat;
+    background-size: cover;
+    position: relative;
+    color: white;
+}
+.header-contents{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    max-width: 50%;
+    bottom: 10%;
+    left: 6vw;
+
+  
+}

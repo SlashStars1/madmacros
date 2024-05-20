@@ -1,6 +1,5 @@
-import food from "./food.jpg"
-import fries from "./fries.jpg"
-import burger from "./burger.jpg"
+
+import { FaHeart } from "react-icons/fa6";
 import React from 'react'
 import "./NavBar.css"
 
@@ -10,8 +9,13 @@ const NavBar = () => {
         
        
         
-        <h1>MAD MACROS</h1>
         
+        <ul className="nav-menu">
+          <li><h1>MAD MACROS</h1></li>
+          <li>Home</li>
+          <li>Favorites <FaHeart/></li>
+          <li>Log in</li>
+        </ul>
     </div>
   )
 }
