@@ -2,7 +2,14 @@ FaRegHeart{
     color:red;
     background-color: red;
 }
+.meal-container{
+    display: flex;
+    flex-direction: column;
+    padding: .2%;
+    width: 30%;
 
+}
+/**
 .meal-container{
     display: flex;
     flex-direction: row;
@@ -12,10 +19,12 @@ FaRegHeart{
     padding-left: 2%;
     
 }
+*/
 
 .meal-name{
     display: flex;
     width: 30%;
     flex-wrap: wrap;
     text-align: left;
+  
 }

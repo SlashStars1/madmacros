@@ -7,9 +7,6 @@ const NavBar = () => {
   return (
     <div id="nav-container">
         
-       
-        
-        
         <ul className="nav-menu">
           <li><h1>MAD MACROS</h1></li>
           <li>Home</li>

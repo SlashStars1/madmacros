@@ -7,10 +7,23 @@ const app = express();
 app.use(cors());
 const port = 5000; //Because the Frontend uses 3000 as it's default port
 
+// variables needed for Mongo DB
+/*
+const dotenv = require('dotenv');
+dotenv.config();
+const mongoose = require('mongoose')
+const MONGO_URI = process.env.MONGO_URI || 'mongodb://localhost:27017/myDatabase';
 
 
+mongoose.connect(MONGO_URI, {
+    dbName: 'yourDB-name',
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+}, err => err ? console.log(err) : 
+    console.log('Connected to yourDB-name database'));
 
 
+*/
 app.get('/',  async (req, res) => {
   try {
     //prints out the request query parameters
