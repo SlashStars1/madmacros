@@ -8,6 +8,9 @@ app.use(cors());
 const port = 5000; //Because the Frontend uses 3000 as it's default port
 
 
+
+
+
 app.get('/',  async (req, res) => {
   try {
     //prints out the request query parameters
@@ -41,6 +44,7 @@ app.get('/',  async (req, res) => {
         break;
     }
     array = await parsecsvFile(csvName, Number(req.query.cals), Number(req.query.protein))
+
     res.type('json')
     res.json(array)
    }
@@ -53,15 +57,6 @@ app.get('/',  async (req, res) => {
  } 
   
   );
-
-
-
-  
- 
-    
-
-  
- 
 
 
 //listens to port 
@@ -88,17 +83,19 @@ function parsecsvFile(csvPath, cals, protein){
     //pushes only the objects from data that matches the cals and protein into the array
     //Number() is used to format the string into a number
     //note that to access the Protein we have to use quotes because of the spaces 
+    
     if (Number(data.Calories) <= cals && Number(data['Protein (g)']) >= protein) {
+   
       results.push(data); 
     }}
+
 ) 
-  .on('end', () => {
-    resolve(results);
-   console.log("success");
-  })
+.on('end',()=>{
+  resolve(results);
+})
+  
   .on('error', (error) => {
     reject(error);
 });
 });
 }
-

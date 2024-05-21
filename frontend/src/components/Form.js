@@ -17,8 +17,9 @@ function submitHandler(event) {
     
    ///request using query string
    const myRequest = new Request(`http://localhost:5000/?cals=${cals}&protein=${protein}&food=${food}`);
-   // Fetch data from the backend
-  
+   // Fetch data from the backend and setting the meals variable inside the context to that data so that 
+   //other components in the frontend can use that information
+
    fetch(myRequest)
      .then((response) => response.json())
      .then((data) => {
