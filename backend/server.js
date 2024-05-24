@@ -1,43 +1,13 @@
 const csv = require('csv-parser') //node package to parse csv
-const { getJson } = require("serpapi"); //api to search for and get an image based on a description 
+
 const fs = require('fs') //file system package
 const cors = require('cors');
 const express = require('express'); //express 
 const app = express();
 app.use(cors());
-app.use(express.json()); //ensures that app can parse JSON
+
 const port = 5000; //Because the Frontend uses 3000 as it's default port
 
-// variables needed for Mongo DB
-
-const dotenv = require('dotenv');
-const mongoose = require('mongoose')
-//127.0.0.1/
-const MONGO_URI = process.env.MONGO_URI || 'mongodb://127.0.0.1/test';
-const userRoutes = require('./routes/user')
-
-dotenv.config();
-
-//registers routes
-app.use('/api/user/', userRoutes )
-
-
-
-//put mongoose connection into async function 
-async function connectDB(){
-  try{
-  await mongoose.connect(MONGO_URI, {
-    dbName: 'Cluster0',
-   
-}); 
-    console.log('Connected to Cluster0 database');
-  }
-  catch (err){
-    console.error(err);
-  }
-}
-
-connectDB();
 
 
 app.get('/submit',  async (req, res) => {
@@ -63,7 +33,7 @@ app.get('/submit',  async (req, res) => {
         csvName = "ihop.csv"
         break;
       case "Jamba":
-        csvName = "jamba.csv"
+        csvName ="jamba.csv"
         break;
       case "Shake Shack":
         csvName = "shake-shack.csv"

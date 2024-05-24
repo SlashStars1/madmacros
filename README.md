@@ -4,4 +4,5 @@ that are within (or close to) that range. The main technologies used to create t
 ![image](https://github.com/SlashStars1/madmacros/assets/126016850/8e74d473-b8dd-4759-b9ac-5c1be623f25c)
 
 
-The csv nutrition tables used were from Ryan Ashcraft's git repo "restaurant-nutrition-data"! 
+- The csv nutrition tables used were from Ryan Ashcraft's git repo "restaurant-nutrition-data"! 
+- All the images are from Pexels
