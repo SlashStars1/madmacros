@@ -5,29 +5,42 @@ const cors = require('cors');
 const express = require('express'); //express 
 const app = express();
 app.use(cors());
+app.use(express.json()); //ensures that app can parse JSON
 const port = 5000; //Because the Frontend uses 3000 as it's default port
 
 // variables needed for Mongo DB
 
 const dotenv = require('dotenv');
-dotenv.config();
 const mongoose = require('mongoose')
-const MONGO_URI = process.env.MONGO_URI || 'mongodb://localhost:27017/myDatabase';
+//127.0.0.1/
+const MONGO_URI = process.env.MONGO_URI || 'mongodb://127.0.0.1/test';
 const userRoutes = require('./routes/user')
+
+dotenv.config();
 
 //registers routes
 app.use('/api/user/', userRoutes )
 
-mongoose.connect(MONGO_URI, {
-    dbName: 'yourDB-name',
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-}, err => err ? console.log(err) : 
-    console.log('Connected to yourDB-name database'));
 
 
+//put mongoose connection into async function 
+async function connectDB(){
+  try{
+  await mongoose.connect(MONGO_URI, {
+    dbName: 'Cluster0',
+   
+}); 
+    console.log('Connected to Cluster0 database');
+  }
+  catch (err){
+    console.error(err);
+  }
+}
 
-app.get('/',  async (req, res) => {
+connectDB();
+
+
+app.get('/submit',  async (req, res) => {
   try {
     //prints out the request query parameters
     console.log("protein: " + req.query.protein)
