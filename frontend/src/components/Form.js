@@ -16,7 +16,11 @@ function submitHandler(event) {
 
     
    ///request using query string
-   const myRequest = new Request(`http://localhost:5000/submit/?cals=${cals}&protein=${protein}&food=${food}`);
+
+
+   //`http://localhost:5000/submit/?cals=${cals}&protein=${protein}&food=${food}`
+   
+   const myRequest = new Request('https://madmacros.vercel.app/submit/?cals=${cals}&protein=${protein}&food=${food}');
    // Fetch data from the backend and setting the meals variable inside the context to that data so that 
    //other components in the frontend can use that information
 
