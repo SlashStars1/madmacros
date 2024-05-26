@@ -6,7 +6,7 @@ const express = require('express'); //express
 const app = express();
 app.use(cors());
 
-const port = 5000; //Because the Frontend uses 3000 as it's default port
+const port = process.env.PORT || 5000; 
 
 
 
