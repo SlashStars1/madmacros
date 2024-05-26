@@ -63,6 +63,8 @@ app.listen(port, () => {
     console.log(`Server is running on port number ${port}`);
   });
 
+//exports app for Vercel 
+  module.exports = app;
 
 //Function that will parse a given csv for protein, cals, and name
 function parsecsvFile(csvPath, cals, protein){
