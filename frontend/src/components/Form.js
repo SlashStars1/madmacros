@@ -6,6 +6,8 @@ const Form = () => {
 
   const { cals, setCals, protein, setProtein, food, setFood, meals, setMeals, submitted, setSubmitted } = useContext(AuthContext); //gets context
 
+  const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:5000';
+
 
 function submitHandler(event) {
     event.preventDefault() //prevents page from automatically refreshing 
@@ -18,14 +20,14 @@ function submitHandler(event) {
    ///request using query string
 
 
-   //`http://localhost:5000/submit/?cals=${cals}&protein=${protein}&food=${food}`
-   
-   const myRequest = new Request('https://madmacros.vercel.app/submit/?cals=${cals}&protein=${protein}&food=${food}');
+   const myRequest = new Request(`${apiUrl}/submit/?cals=${cals}&protein=${protein}&food=${food}`);
    // Fetch data from the backend and setting the meals variable inside the context to that data so that 
    //other components in the frontend can use that information
 
    fetch(myRequest)
-     .then((response) => response.json())
+     .then((response) =>
+    
+      response.json())
      .then((data) => {
        setMeals(data);
        console.log(meals);
