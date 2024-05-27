@@ -20,25 +20,25 @@ app.get('/submit',  async (req, res) => {
 
     switch (req.query.food){
       case "Panera Bread": 
-        csvName = "panera-bread.csv";
+        csvName = "api\\panera-bread.csv";
         break;
       case "Chic Fil A":
-        csvName = "chick-fil-a.csv";
+        csvName = "api\\chick-fil-a.csv";
         break;
       case "Chipotle":
-        csvName = "chipotle.csv"
+        csvName = "api\\chipotle.csv" 
         break;
       case "Ihop":
-        csvName = "ihop.csv"
+        csvName = "api\\ihop.csv"
         break;
       case "Jamba":
-        csvName ="jamba.csv"
+        csvName ="api\\jamba.csv"
         break;
       case "Shake Shack":
-        csvName = "shake-shack.csv"
+        csvName = "api\\shake-shack.csv"
         break;
       case "Halal Guys":
-        csvName = "the-halal-guys.csv"
+        csvName = "api\\the-halal-guys.csv"
         break;
     }
     array = await parsecsvFile(csvName, Number(req.query.cals), Number(req.query.protein))
