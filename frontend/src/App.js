@@ -11,13 +11,6 @@ import { Home } from "./components/Home";
 import Favorites from "./components/Favorites";
 function App() {
 
-  //we put the AuthContextProvider in the App so that all the child components within it can acess the context!
- /*
- <Header></Header>
-<Form></Form>
-<Menu></Menu>
- */
- 
   return (
     <Router>
     <AuthContextProvider>

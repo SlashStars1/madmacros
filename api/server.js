@@ -1,10 +1,13 @@
 const csv = require('csv-parser') //node package to parse csv
-
 const fs = require('fs') //file system package
 const cors = require('cors');
 const express = require('express'); //express 
 const app = express();
-app.use(cors());
+
+// Use CORS middleware
+app.use(cors({
+  origin: 'https://madmacros.vercel.app' // Allows GET requests from frontend domain
+}));
 
 const port = process.env.PORT || 5000; 
 
@@ -20,25 +23,25 @@ app.get('/submit',  async (req, res) => {
 
     switch (req.query.food){
       case "Panera Bread": 
-        csvName = "api\\panera-bread.csv";
+        csvName = "api//panera-bread.csv";
         break;
       case "Chic Fil A":
-        csvName = "api\\chick-fil-a.csv";
+        csvName = "api//chick-fil-a.csv";
         break;
       case "Chipotle":
-        csvName = "api\\chipotle.csv" 
+        csvName = "api//chipotle.csv" 
         break;
       case "Ihop":
-        csvName = "api\\ihop.csv"
+        csvName = "api//ihop.csv"
         break;
       case "Jamba":
-        csvName ="api\\jamba.csv"
+        csvName ="api//jamba.csv"
         break;
       case "Shake Shack":
-        csvName = "api\\shake-shack.csv"
+        csvName = "api//shake-shack.csv"
         break;
       case "Halal Guys":
-        csvName = "api\\the-halal-guys.csv"
+        csvName = "api//the-halal-guys.csv"
         break;
     }
     array = await parsecsvFile(csvName, Number(req.query.cals), Number(req.query.protein))
