@@ -12,7 +12,10 @@ button{
     display: flexbox;
    
     border-radius: 12px;
+    
     cursor: pointer;
     padding: 1%;
     
+    background-color: white;
+
 }
