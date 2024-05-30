@@ -5,9 +5,16 @@ const csv = require('csv-parser') //node package to parse csv
 const fs = require('fs') //file system package
 const cors = require('cors');
 const express = require('express'); //express 
+
+//gets the routes from workouts.js
+const favoriteRoutes = require('./routes/favorites')
+
+
 const app = express();
 
 const mongoose = require('mongoose')
+
+
 
 //middlware that will pass attirbutes of the request to it
 app.use(express.json())
@@ -15,7 +22,7 @@ app.use(express.json())
 
 // Use CORS middleware
 app.use(cors({
-  origin: 'https://madmacros.vercel.app' // Allows GET requests from frontend domain
+  origin: ['https://madmacros.vercel.app', 'http://localhost:3000'] // Allows GET requests from frontend domain
 }));
 
 const port = process.env.PORT || 5000; 
@@ -67,6 +74,10 @@ app.get('/submit',  async (req, res) => {
  } 
   
   );
+
+
+  //grabs all routes attached to the workoutRoutes and attaches to app
+app.use('/api/favorites', favoriteRoutes) 
 
 
 
