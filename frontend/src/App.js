@@ -6,6 +6,7 @@ import {AuthContextProvider} from './components/store/auth-context';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { Home } from "./components/Home";
 import Favorites from "./components/Favorites";
+import FavoritesTwo from "./components/FavoritesTwo"
 function App() {
 
   return (
@@ -15,7 +16,7 @@ function App() {
       <NavBar/>
     <Routes>
     <Route path="/" element={<Home ></Home>}></Route>
-    <Route path="/favorites" element={<Favorites></Favorites>}></Route>
+    <Route path="/favorites" element={<FavoritesTwo></FavoritesTwo>}></Route>
       </Routes>
    
     </div>

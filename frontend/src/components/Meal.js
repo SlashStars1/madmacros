@@ -8,6 +8,9 @@ const Meal = ({name, serving, imageURL, calories, protein, food, fav}) => {
   const{favorites, setFavorites} = useContext(AuthContext);
   const [isFavorite, setIsFavorite] = useState(fav); //sets the favorite state to whatever argument was passed in
 
+   const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:5000';
+
+
   //to help handle the asynchronous nature 
   useEffect(() => {
     if (isFavorite) {
@@ -40,6 +43,36 @@ const Meal = ({name, serving, imageURL, calories, protein, food, fav}) => {
         Restaraunt: food
       }]);
     }
+
+    //add to the db
+    
+   ///request using query string
+   const myRequest = new Request(`${apiUrl}/api/favorites/`);
+   fetch(myRequest, { 
+      
+    // Adding method type 
+    method: "POST", 
+      
+    // Adding body or contents to send 
+    body: JSON.stringify({ 
+        name: name,
+        food: food,
+        serving: serving, 
+        protein: protein, 
+        calories: calories
+    }), 
+      
+    // Adding headers to the request 
+    headers: { 
+        "Content-type": "application/json; charset=UTF-8"
+    } 
+}) 
+  .then(data => {
+    console.log(data);
+  })
+  .catch(error => {
+    console.error('There was a problem with the post operation:', error);
+  });
     }
     
     function removeFavorite(itemName){

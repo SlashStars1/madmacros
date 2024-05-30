@@ -3,7 +3,7 @@
 const express = require('express')
 
 //get controllers
-const  {getFavorites, createFavorite} = require('../controllers/favoriteController')
+const  {getFavorites, createFavorite, deleteFavorite} = require('../controllers/favoriteController')
 
 const router = express.Router()
 
@@ -17,9 +17,7 @@ router.get('/', getFavorites)
 router.post('/', createFavorite)
 
 //DELETE a favorite
-router.delete('/:id',(req, res) =>{
-    res.json({mssg: 'DELETE a favorite'})
-})
+router.delete('/:id', deleteFavorite)
 
 
 module.exports = router; //export router for use in server

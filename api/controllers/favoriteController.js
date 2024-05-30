@@ -3,10 +3,11 @@
 
 const Favorite = require('../models/favoriteModel.js') //get schema
 
+const mongoose = require ('mongoose') //get mongoose (we're using this to make sure the id is valid)
 
 //get all favorites
 const getFavorites = async(req, res)=>{
-    const favorites = await Favorite.find({}).sort({food: -1})
+    const favorites = await Favorite.find({}).sort({food: -1}) //sort by restaraunt aka food
     res.status(200).json(favorites) //sends ok status with favorites in the json body
 }
 
@@ -25,9 +26,29 @@ const createFavorite = async (req, res) =>{
 }
 
 //delete favorite
+const deleteFavorite = async (req, res)=>{
+    
+    const {id} = req.params //grab the favorite meal id from the request parameters
+
+    //checks that it's a valid monggoose id. if not returns error 
+    if (!mongoose.Types.ObjectId.isValid(id)){
+        return res.status(400).son({error: "No such favorite"})
+    }
+
+    const favorite = await Favorite.findOneAndDelete({_id: id})
+
+    
+    if (!favorite){ //if favorite doesn't exist in db return 404 error
+        return res.status(404).json({error: "No such favorite"})
+    }
+
+    //sends the deleted favorite with OK status 
+    res.status(200).json(favorite)
+}
 
 //export this
 module.exports = {
     getFavorites,
-    createFavorite
+    createFavorite,
+    deleteFavorite
 }
