@@ -1,8 +1,17 @@
+
+require('dotenv').config()
+
 const csv = require('csv-parser') //node package to parse csv
 const fs = require('fs') //file system package
 const cors = require('cors');
 const express = require('express'); //express 
 const app = express();
+
+const mongoose = require('mongoose')
+
+//middlware that will pass attirbutes of the request to it
+app.use(express.json())
+
 
 // Use CORS middleware
 app.use(cors({
@@ -60,10 +69,19 @@ app.get('/submit',  async (req, res) => {
   );
 
 
-//listens to port 
-app.listen(port, () => {
-    console.log(`Server is running on port number ${port}`);
-  });
+
+//connect to db
+mongoose.connect(process.env.MONGO_URI)
+    .then(()=>{
+        //listen for requests
+        app.listen(port, ()=>{
+            console.log('connected to db & listening on port', port)
+        })
+    })
+    .catch((error)=>{
+        console.log(error)
+    })
+
 
 //exports app for Vercel 
   module.exports = app;
