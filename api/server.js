@@ -6,9 +6,10 @@ const fs = require('fs') //file system package
 const cors = require('cors');
 const express = require('express'); //express 
 
-//gets the routes from workouts.js
+//gets the routes from favorites.js
 const favoriteRoutes = require('./routes/favorites')
 
+const userRoutes = require('./routes/user')
 
 const app = express();
 
@@ -76,10 +77,10 @@ app.get('/submit',  async (req, res) => {
   );
 
 
-  //grabs all routes attached to the workoutRoutes and attaches to app
+  //grabs all routes attached to the favoriteRoutes and attaches to app
 app.use('/api/favorites', favoriteRoutes) 
-
-
+//grabs all routes attached to the user Routes and attaches to app
+app.use('/api/user', userRoutes)
 
 //connect to db
 mongoose.connect(process.env.MONGO_URI)

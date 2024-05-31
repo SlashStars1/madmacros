@@ -12,10 +12,14 @@ const NavBar = () => {
         <ul className="nav-menu">
        
      
-          <li><Link to="/"style={{ textDecoration: 'none', color:'black'  }}> <h1>MAD MACROS</h1></Link></li>
+          <li><Link to="/"style={{ textDecoration: 'none', color:'black'  }}> <h3>MAD MACROS</h3></Link></li>
           <li><Link to="/"style={{ textDecoration: 'none', color:'black'  }}>Home</Link></li>
           <li><Link to="/favorites" style={{ textDecoration: 'none', color:'black' }}>Favorites <FaHeart/></Link></li>
+          <li><Link to="/login" style={{ textDecoration: 'none', color:'black' }}>Login</Link></li>
+          <li><Link to="/signup" style={{ textDecoration: 'none', color:'black' }}>Signup</Link></li>
         
+
+
         </ul>
         
     </div>
