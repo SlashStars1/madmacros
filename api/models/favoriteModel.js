@@ -23,7 +23,7 @@ const favoriteSchema = new Schema({
     },
     serving: {
         type: String,
-        required: true
+        required: false
     },
     protein: {
         type: Number,

@@ -18,6 +18,15 @@ const createFavorite = async (req, res) =>{
 
     //add doc to db
     try{
+
+
+         // Check if the favorite already exists
+    const existingFavorite = await Favorite.findOne({ name, food, serving, protein, calories });
+
+    if (existingFavorite) {
+      return res.status(400).json({ error: 'Favorite already in db' });
+    }
+
         const favorite = await Favorite.create({name, food, serving, protein, calories }) //creating a favorite using the Favorite model we imported from favoriteModel.js
         res.status(200).json(favorite); //send the object back with ok status
     }catch(error){
@@ -32,7 +41,7 @@ const deleteFavorite = async (req, res)=>{
 
     //checks that it's a valid monggoose id. if not returns error 
     if (!mongoose.Types.ObjectId.isValid(id)){
-        return res.status(400).son({error: "No such favorite"})
+        return res.status(400).json({error: "No such favorite"})
     }
 
     const favorite = await Favorite.findOneAndDelete({_id: id})

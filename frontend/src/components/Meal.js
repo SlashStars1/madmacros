@@ -3,7 +3,7 @@ import { FaRegHeart } from "react-icons/fa6";
 import { FaHeart } from "react-icons/fa6";
 import './Meal.css'
 import AuthContext from './store/auth-context';
-const Meal = ({name, serving, imageURL, calories, protein, food, fav}) => {
+const Meal = ({name, serving, calories, protein, food, fav}) => {
     
   const{favorites, setFavorites} = useContext(AuthContext);
   const [isFavorite, setIsFavorite] = useState(fav); //sets the favorite state to whatever argument was passed in
@@ -42,11 +42,12 @@ const Meal = ({name, serving, imageURL, calories, protein, food, fav}) => {
         "Serving Size Description": serving,
         Restaraunt: food
       }]);
-    }
 
-    //add to the db
+
+       //add to the db
+       console.log(name, food, serving, protein, calories)
     
-   ///request using query string
+   ///request 
    const myRequest = new Request(`${apiUrl}/api/favorites/`);
    fetch(myRequest, { 
       
@@ -55,11 +56,11 @@ const Meal = ({name, serving, imageURL, calories, protein, food, fav}) => {
       
     // Adding body or contents to send 
     body: JSON.stringify({ 
-        name: name,
-        food: food,
-        serving: serving, 
-        protein: protein, 
-        calories: calories
+        "name": name,
+        "food": food,
+        "serving": serving, 
+        "protein": protein, 
+        "calories": calories
     }), 
       
     // Adding headers to the request 
@@ -73,6 +74,12 @@ const Meal = ({name, serving, imageURL, calories, protein, food, fav}) => {
   .catch(error => {
     console.error('There was a problem with the post operation:', error);
   });
+
+    }
+
+   
+
+
     }
     
     function removeFavorite(itemName){
