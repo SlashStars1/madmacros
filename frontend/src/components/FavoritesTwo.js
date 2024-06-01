@@ -4,21 +4,28 @@ import Heart from '../assets/heart.png'
 import "./Favorites.css"
 import AuthContext from './store/auth-context'
 import FavMeal from './FavMeal'
-
+import { useUserAuthContext } from './hooks/useUserAuthContext'
 
 const FavoritesTwo = () => {
 
   
 const {favorites} = useContext(AuthContext);
-
+const {user} = useUserAuthContext()
     const [favs, setFavs] = useState([]) //empty array 
 
     useEffect(() => {
-      fetchFavorites();
-    }, [favorites])
+      if (user){
+        fetchFavorites();
+      }
+      
+    }, [favorites, user])
 
     const fetchFavorites = async() =>{
-        const response = await fetch('http://localhost:5000/api/favorites')
+        const response = await fetch('http://localhost:5000/api/favorites',{
+          headers:{
+            'Authorization':`Bearer ${user.token}`
+          }
+        })
 
         const json = await response.json()
 
@@ -34,7 +41,14 @@ const {favorites} = useContext(AuthContext);
 
   return (
     <div><h1>Favorites Two</h1>
-    {(favs==0)?
+
+    {!user && (
+
+<div className="no-favorites"> <img src={Heart}/><p>
+Please login to see your favorite meals!</p></div>
+    )}
+
+    {(favs==0 && user)?
     <div className="no-favorites"> <img src={Heart}/><p>
         You have no favorites. Heart a meal to see them here!</p></div>: <></>}
 

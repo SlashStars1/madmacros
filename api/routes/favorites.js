@@ -5,7 +5,10 @@ const express = require('express')
 //get controllers
 const  {getFavorites, createFavorite, deleteFavorite} = require('../controllers/favoriteController')
 
+const requireAuth = require('../middleware/requireAuth')
 const router = express.Router()
+
+router.use(requireAuth) //will find the middlware function that authenticates the user BEFORE letting user go forward to any routes
 
 //ALL the different request handlers we're adding to the router:
 

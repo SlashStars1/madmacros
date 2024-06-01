@@ -3,11 +3,14 @@ import { FaRegHeart } from "react-icons/fa6";
 import { FaHeart } from "react-icons/fa6";
 import './Meal.css'
 import AuthContext from './store/auth-context';
-const Meal = ({name, serving, calories, protein, food, fav}) => {
-    
-  const{favorites, setFavorites} = useContext(AuthContext);
-  const [isFavorite, setIsFavorite] = useState(fav); //sets the favorite state to whatever argument was passed in
+import { useUserAuthContext } from './hooks/useUserAuthContext';
+ 
 
+const Meal = ({name, serving, calories, protein, food, fav}) => {
+     const{favorites, setFavorites} = useContext(AuthContext);
+     const[error, setError] = useState(null)
+  const [isFavorite, setIsFavorite] = useState(fav); //sets the favorite state to whatever argument was passed in
+const {user} = useUserAuthContext()
    const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:5000';
 
 
@@ -33,6 +36,12 @@ const Meal = ({name, serving, calories, protein, food, fav}) => {
     }
 
     function addFavorite(){
+
+      if (!user){
+       setError('You must be logged in')
+       return
+      }
+
       // Check if the meal is already in favorites
     if (!favorites.some(fav => fav.Name === name)) {
       setFavorites([...favorites, {
@@ -65,7 +74,9 @@ const Meal = ({name, serving, calories, protein, food, fav}) => {
       
     // Adding headers to the request 
     headers: { 
-        "Content-type": "application/json; charset=UTF-8"
+        "Content-type": "application/json; charset=UTF-8",
+        'Authorization':`Bearer ${user.token}`
+         
     } 
 }) 
   .then(data => {
@@ -103,9 +114,11 @@ const filteredFavorites = favorites.filter((fav) => fav.Name !== itemName);
      <p>   {protein}g protein</p>
        <div className="favoriteDiv">
         <br></br>
+
          { isFavorite ? <FaHeart onClick={favoriteHandler}  /> :
-       <FaRegHeart  onClick={favoriteHandler} /> }
+       <></> }
        
+       {user && !isFavorite ? <FaRegHeart  onClick={favoriteHandler} /> : <></> }
        </div>
 
    </div>

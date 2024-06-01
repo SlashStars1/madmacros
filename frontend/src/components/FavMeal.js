@@ -3,11 +3,15 @@ import { FaRegHeart } from "react-icons/fa6";
 import { FaHeart } from "react-icons/fa6";
 import './Meal.css'
 import AuthContext from './store/auth-context';
+
+import { useUserAuthContext } from './hooks/useUserAuthContext';
+
 const FavMeal = ({name, serving, calories, protein, food,id,fav}) => {
-    
+ 
+
   const{favorites, setFavorites} = useContext(AuthContext);
   const [isFavorite, setIsFavorite] = useState(fav); //sets the favorite state to whatever argument was passed in
-
+    const {user}=useUserAuthContext()
    const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:5000';
 
 
@@ -38,6 +42,10 @@ fetch(myRequest, {
    
  // Adding method type 
  method: "DELETE", 
+ headers:{
+    'Authorization':`Bearer ${user.token}`
+         
+ }
 }) 
 .then(response => {
  console.log(response);

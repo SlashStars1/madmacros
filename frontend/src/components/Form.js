@@ -1,11 +1,11 @@
 import React,{useContext, useEffect, useState} from 'react'
 import "./Form.css"
 import AuthContext from './store/auth-context';
-
+import { useUserAuthContext } from './hooks/useUserAuthContext';
 const Form = () => {
 
   const { cals, setCals, protein, setProtein, food, setFood, meals, setMeals, submitted, setSubmitted } = useContext(AuthContext); //gets context
-
+const {user} = useUserAuthContext()
   const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:5000';
 
 
@@ -39,7 +39,7 @@ function submitHandler(event) {
 }
 
   return (
-    <div>
+    <div className="bigDiv">
       <br></br>
         <form id="form" onSubmit={submitHandler}>
 
@@ -69,6 +69,8 @@ function submitHandler(event) {
 
             <button type="submit" id="submitter" >Find meals</button>
         </form>
+
+{!user && (<div className="error">Please login to favorite meals</div>)}
 
     </div>
     

@@ -19,3 +19,8 @@ button{
     background-color: white;
 
 }
+
+.error{
+    margin-top:20px;
+    width:25%;
+}
