@@ -18,10 +18,13 @@ export const UserAuthContextProvider = ({children})=>{
         user: null //initial state
     })
 
+
+    //when application we are loads this runs once to check if we are already
+    //logged in and updates the global state accordingly 
     useEffect(() => {
         const user = JSON.parse(localStorage.getItem('user'))
     
-        if (user) {
+        if (user) { 
           dispatch({ type: 'LOGIN', payload: user }) 
         }
       }, [])
