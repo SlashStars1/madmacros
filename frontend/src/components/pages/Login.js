@@ -9,6 +9,9 @@ const Login = () => {
     const submitHandler = async(e)=>{
         e.preventDefault()//prevent window reloading
 
+        
+  //  await login(email, password)
+
     }
 
   return (
@@ -27,7 +30,7 @@ const Login = () => {
 <label>Password:</label> &nbsp;
         <input 
         type="password"
-        onChange={(e)=> setEmail(e.target.value)}/>
+        onChange={(e)=> setPassword(e.target.value)}/>
         </div>
 
         <button>Log in</button>
