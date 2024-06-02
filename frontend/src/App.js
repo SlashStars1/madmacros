@@ -8,7 +8,6 @@ import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-d
 import { Home } from "./components/Home";
 import Login from "./components/pages/Login";
 import Signup from "./components/pages/Signup";
-import Favorites from "./components/Favorites";
 import FavoritesTwo from "./components/FavoritesTwo"
 function App() {
 

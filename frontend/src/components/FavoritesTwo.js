@@ -1,5 +1,4 @@
 import React,{useEffect, useState, useContext} from 'react'
-import Meal from './Meal'
 import Heart from '../assets/heart.png'
 import "./Favorites.css"
 import AuthContext from './store/auth-context'
