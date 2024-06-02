@@ -43,7 +43,7 @@ const {user} = useUserAuthContext()
     
 
   return (
-    <div><h1>Favorites Two</h1>
+    <div><h1>Favorites</h1>
 
     {!user && (
 
