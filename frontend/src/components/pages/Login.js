@@ -1,6 +1,8 @@
 import React, {useState} from 'react'
 import './Login.css'
 import { useLogin } from '../hooks/useLogin'
+import { useUserAuthContext } from '../hooks/useUserAuthContext'
+import { Link } from "react-router-dom";
 
 const Login = () => {
 
@@ -14,6 +16,7 @@ const Login = () => {
         
        await login(email, password)
 
+    
     }
 
   return (
@@ -38,6 +41,8 @@ const Login = () => {
         <button disabled={isLoading}>Log in</button>
 
         {error && <div className="error">{error}</div>}
+
+        <p>Don't have an account? Click here to <Link to="/signup">sign up </Link></p>
     </form>
    
     

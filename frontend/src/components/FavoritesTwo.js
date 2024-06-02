@@ -17,6 +17,9 @@ const {user} = useUserAuthContext()
       if (user){
         fetchFavorites();
       }
+      else{
+        setFavs([]) //if user is not logged in set the favorites in state to empty.
+      }
       
     }, [favorites, user])
 

@@ -30,7 +30,7 @@ const NavBar = () => {
           <li><button onClick={handleClick}>Log Out</button></li>
           </div>)}
         {!user && (<div>  <li><Link to="/login" style={{ textDecoration: 'none', color:'black' }}>Login</Link></li>
-          <li><Link to="/signup" style={{ textDecoration: 'none', color:'black' }}>Signup</Link></li>
+         
         </div>)}
       
 

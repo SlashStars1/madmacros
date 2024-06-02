@@ -7,12 +7,14 @@ const mongoose = require ('mongoose') //get mongoose (we're using this to make s
 
 //get all favorites
 const getFavorites = async(req, res)=>{
-    const favorites = await Favorite.find({}).sort({food: -1}) //sort by restaraunt aka food
+    const user_id = req.user._id; //grabs user id from request body
+    const favorites = await Favorite.find({user_id}).sort({food: -1}) //gets all favorits associated with user id sort by restaraunt aka food
     res.status(200).json(favorites) //sends ok status with favorites in the json body
 }
 
 //create new favorite
 const createFavorite = async (req, res) =>{
+    
     const {name, food, serving, protein, calories} = req.body //the attributes of the meal will be 
     //sent with the body
 
@@ -20,14 +22,16 @@ const createFavorite = async (req, res) =>{
     try{
 
 
-         // Check if the favorite already exists
-    const existingFavorite = await Favorite.findOne({ name, food, serving, protein, calories });
+        const user_id = req.user._id; //grab the user id from the request that we had attached in the requireAuth middlware 
+        console.log("id:", user_id) 
+        // Check if the favorite already exists
+    const existingFavorite = await Favorite.findOne({ user_id, name, food, serving, protein, calories,});
 
     if (existingFavorite) {
       return res.status(400).json({ error: 'Favorite already in db' });
     }
 
-        const favorite = await Favorite.create({name, food, serving, protein, calories }) //creating a favorite using the Favorite model we imported from favoriteModel.js
+        const favorite = await Favorite.create({name, food, serving, protein, calories, user_id }) //creating a favorite using the Favorite model we imported from favoriteModel.js
         res.status(200).json(favorite); //send the object back with ok status
     }catch(error){
         res.status(400).json({error: error.message}) //sends back 400 status with message

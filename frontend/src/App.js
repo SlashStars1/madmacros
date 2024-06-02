@@ -4,7 +4,7 @@ import NavBar from './components/NavBar';
 import React, {useState, useEffect} from "react";
 import {AuthContextProvider} from './components/store/auth-context';
 import { UserAuthContextProvider } from "./components/store/UserAuthContext";
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import { Home } from "./components/Home";
 import Login from "./components/pages/Login";
 import Signup from "./components/pages/Signup";

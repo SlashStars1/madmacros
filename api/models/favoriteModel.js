@@ -32,6 +32,10 @@ const favoriteSchema = new Schema({
     calories: {
         type: Number,
         required: true
+    },
+    user_id:{
+        type:String,
+        required: true
     }
 }, {timeStamps:true})
 
