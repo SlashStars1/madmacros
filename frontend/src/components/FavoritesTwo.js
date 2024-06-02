@@ -22,8 +22,10 @@ const {user} = useUserAuthContext()
       
     }, [favorites, user])
 
+    const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:5000';
+
     const fetchFavorites = async() =>{
-        const response = await fetch('http://localhost:5000/api/favorites',{
+        const response = await fetch(`${apiUrl}/api/favorites`,{
           headers:{
             'Authorization':`Bearer ${user.token}`
           }
