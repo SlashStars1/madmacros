@@ -88,12 +88,7 @@ app.use('/api/user', userRoutes)
 
 //connect to db
 mongoose.connect(process.env.MONGO_URI, 
-  {
-    proxyUsername: fixieData[0],
-    proxyPassword: fixieData[1],
-    proxyHost: fixieData[2],
-    proxyPort: fixieData[3]
-   }
+  
 ) //make sure to set env vars 
     .then(()=>{
         //listen for requests
