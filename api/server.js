@@ -6,11 +6,8 @@ const fs = require('fs') //file system package
 const cors = require('cors');
 const express = require('express'); //express 
 
-const SocksProxyAgent = require('socks-proxy-agent'); //proxy agent for ip addrss
-const fixieUrl = process.env.FIXIE_SOCKS_HOST;
-
-const proxyOptions = url.parse(fixieUrl);
-const agent = new SocksProxyAgent(proxyOptions);
+//adding fixie socks
+const fixieData = process.env.FIXIE_SOCKS_HOST.split(new RegExp('[/(:\\/@/]+'));
 
 
 //gets the routes from favorites.js
@@ -90,8 +87,14 @@ app.use('/api/favorites', favoriteRoutes)
 app.use('/api/user', userRoutes)
 
 //connect to db
-mongoose.connect(process.env.MONGO_URI, {  agent: agent
-}) //make sure to set env vars 
+mongoose.connect(process.env.MONGO_URI, 
+  {
+    proxyUsername: fixieData[0],
+    proxyPassword: fixieData[1],
+    proxyHost: fixieData[2],
+    proxyPort: fixieData[3]
+   }
+) //make sure to set env vars 
     .then(()=>{
         //listen for requests
         app.listen(port, ()=>{
