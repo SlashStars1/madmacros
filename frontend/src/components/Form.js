@@ -52,7 +52,10 @@ function submitHandler(event) {
             <option value="Ihop">Ihop</option>
             <option value="Jamba">Jamba</option>
             <option value="Shake Shack">Shake Shack</option>
-            <option value="Halal Guys">Halal Guys</option>
+            <option value ="Dairy Queen">Dairy Queen</option>
+         <option value = "Little Caesars">Little Caesars</option>
+         <option value="Subway">Subway</option>
+         <option value="Panda Express">Panda Express</option>
             </select>
             </div>
             <div id="largerdiv">
