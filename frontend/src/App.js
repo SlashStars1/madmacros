@@ -9,7 +9,6 @@ import { Home } from "./components/Home";
 import Login from "./components/pages/Login";
 import Signup from "./components/pages/Signup";
 import FavoritesTwo from "./components/FavoritesTwo"
-import { SpeedInsights } from "@vercel/speed-insights/react"
 function App() {
 
   return (
