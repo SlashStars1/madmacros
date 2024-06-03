@@ -1,16 +1,16 @@
-FaRegHeart{
-    color:red;
-    background-color: red;
-}
+
+
 
 .meal-container{
     display: flex;
     flex-direction: row;
-    border-width: 20px;
-    border-color: black;
-    border-radius: 2%;
+    border: 1px solid black;
+    border-radius: 4px;
+    border-collapse: separate; 
     padding-left: 2%;
-    
+    margin-top: 1%;
+    padding:0.5%
+
 }
 
 
@@ -19,8 +19,17 @@ FaRegHeart{
     width: 30%;
     flex-wrap: wrap;
     text-align: left;
+    
   
 }
 :root{
     --fa-primary-color: green;
+}
+
+.heart{
+    color:red
+}
+
+#regheart:hover{
+    cursor: pointer;
 }

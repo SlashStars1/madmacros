@@ -23,3 +23,16 @@ button{
 Link{
     color:blue;
 }
+
+.success{
+    margin-top: 10%;
+margin-left:25%;
+margin-right:25%;
+    
+    background: #c4ecb8;
+    border: 1px solid #17940b;
+    color:#17940b;
+    border-radius: 4px;
+    width:50%;
+    
+}

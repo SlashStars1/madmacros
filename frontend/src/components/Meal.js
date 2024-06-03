@@ -115,10 +115,10 @@ const filteredFavorites = favorites.filter((fav) => fav.Name !== itemName);
        <div className="favoriteDiv">
         <br></br>
 
-         { isFavorite ? <FaHeart onClick={favoriteHandler}  /> :
+         { isFavorite ? <FaHeart onClick={favoriteHandler}  className='heart'/> :
        <></> }
        
-       {user && !isFavorite ? <FaRegHeart  onClick={favoriteHandler} /> : <></> }
+       {user && !isFavorite ? <FaRegHeart  onClick={favoriteHandler} className="heart" id="regheart"/> : <></> }
        </div>
 
    </div>

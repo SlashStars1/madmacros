@@ -72,8 +72,8 @@ fetch(myRequest, {
      <p>   {protein}g protein</p>
        <div className="favoriteDiv">
         <br></br>
-         { isFavorite ? <FaHeart onClick={favoriteHandler}  /> :
-       <FaRegHeart  onClick={favoriteHandler} /> }
+         { isFavorite ? <FaHeart onClick={favoriteHandler}  className="heart" id="regheart"/> :
+       <FaRegHeart  onClick={favoriteHandler} className='heart' /> }
        
        </div>
 

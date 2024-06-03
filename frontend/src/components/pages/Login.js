@@ -3,9 +3,11 @@ import './Login.css'
 import { useLogin } from '../hooks/useLogin'
 import { useUserAuthContext } from '../hooks/useUserAuthContext'
 import { Link } from "react-router-dom";
+import { FaCircleCheck} from "react-icons/fa6";
 
 const Login = () => {
 
+  const {user} = useUserAuthContext()
     const[email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const {login, error, isLoading} = useLogin() //grab login function from useLogin hook
@@ -20,7 +22,9 @@ const Login = () => {
     }
 
   return (
-    
+    <>
+    {!user ?
+      (
     <form className="login" onSubmit={submitHandler}>
         <h3>Log in</h3>
 
@@ -43,8 +47,8 @@ const Login = () => {
         {error && <div className="error">{error}</div>}
 
         <p>Don't have an account? Click here to <Link to="/signup">sign up </Link></p>
-    </form>
-   
+    </form>) : (<div className="success"><FaCircleCheck></FaCircleCheck><h2>Log in was successful!</h2> Please return to the Home page to start favoriting meals</div>)}
+   </>
     
   )
 }

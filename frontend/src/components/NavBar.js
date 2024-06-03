@@ -25,7 +25,7 @@ const NavBar = () => {
           <li><Link to="/"style={{ textDecoration: 'none', color:'black'  }}> <h3>MAD MACROS</h3></Link></li>
           
           <li><Link to="/"style={{ textDecoration: 'none', color:'black'  }}>Home</Link></li>
-          <li><Link to="/favorites" style={{ textDecoration: 'none', color:'black' }}>Favorites <FaHeart/></Link></li>
+          <li><Link to="/favorites" style={{ textDecoration: 'none', color:'black' }}>Favorites <FaHeart className="heart"/></Link></li>
           {user && (<div><li>{user.email}</li>
           <li><button onClick={handleClick}>Log Out</button></li>
           </div>)}

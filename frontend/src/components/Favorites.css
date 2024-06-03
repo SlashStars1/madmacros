@@ -13,3 +13,12 @@ h1 h2{
     font-family:'Poppins', sans-serif;
      
 }
+
+
+.heart{
+    color:red
+}
+
+#regheart:hover{
+    cursor: pointer;
+}

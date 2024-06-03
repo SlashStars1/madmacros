@@ -1,8 +1,12 @@
 import React, {useState} from 'react'
 import { useSignup } from '../hooks/useSignup'
 import { Link } from 'react-router-dom'
-const Signup = () => {
+import { useUserAuthContext } from '../hooks/useUserAuthContext';
+import { FaCircleCheck} from "react-icons/fa6";
+import './Login.css'
 
+const Signup = () => {
+        const {user} = useUserAuthContext()
     const[email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const{signup, error, isLoading} = useSignup()
@@ -15,7 +19,11 @@ const Signup = () => {
     }
 
   return (
-    <form className="signup" onSubmit={submitHandler}>
+<>
+        {user ? (<div className="success"><FaCircleCheck></FaCircleCheck><h2>Sign up was successful!</h2> Please return to the Home page to start favoriting meals</div>)
+        : 
+        
+    (<form className="signup" onSubmit={submitHandler}>
         <h3>Sign up</h3>
 
 <div>
@@ -39,7 +47,7 @@ const Signup = () => {
         {error && <div className="error">{error}</div>}
 
         <p> Already have an account? Click here to <Link to="/login"> login </Link></p>
-    </form>
+    </form>)} </>
   )
 }
 
