@@ -64,6 +64,18 @@ app.get('/submit',  async (req, res) => {
       case "Halal Guys":
         csvName = "api//the-halal-guys.csv"
         break;
+      case "Dairy Queen":
+        csvName = "api//dairy-queen.csv"
+        break;
+      case "Little Caesars":
+        csvName = "api//little-caesars.csv"
+        break;
+      case "Subway":
+        csvName = "api//subway.csv"
+        break;
+      case "Panda Express":
+        csvName = "api//panda-express.csv"
+        break;
     }
     array = await parsecsvFile(csvName, Number(req.query.cals), Number(req.query.protein))
 
