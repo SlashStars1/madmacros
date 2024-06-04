@@ -15,10 +15,3 @@ h1 h2{
 }
 
 
-.heart{
-    color:red
-}
-
-#regheart:hover{
-    cursor: pointer;
-}
