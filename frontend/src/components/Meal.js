@@ -7,8 +7,8 @@ import { useUserAuthContext } from './hooks/useUserAuthContext';
  
 
 const Meal = ({name, serving, calories, protein, food, fav}) => {
-     const{favorites, setFavorites} = useContext(AuthContext);
-     const[error, setError] = useState(null)
+     const{favorites, setFavorites, setError} = useContext(AuthContext);
+    
   const [isFavorite, setIsFavorite] = useState(fav); //sets the favorite state to whatever argument was passed in
 const {user} = useUserAuthContext()
    const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:5000';
@@ -26,11 +26,14 @@ const {user} = useUserAuthContext()
  
   function favoriteHandler(){
 
-    
+    if (user){
     let opposite = !isFavorite
         //change open heart to filled in heart
         setIsFavorite(opposite)
-   
+    }
+    else if (!user && !isFavorite){
+      setError('You must be logged in to favorite meals')
+    }
        
       
     }
@@ -38,8 +41,11 @@ const {user} = useUserAuthContext()
     function addFavorite(){
 
       if (!user){
-       setError('You must be logged in')
+       
        return
+      }
+      else{
+        setError("")
       }
 
       // Check if the meal is already in favorites
@@ -118,7 +124,7 @@ const filteredFavorites = favorites.filter((fav) => fav.Name !== itemName);
          { isFavorite ? <FaHeart onClick={favoriteHandler}  className='heart'/> :
        <></> }
        
-       {user && !isFavorite ? <FaRegHeart  onClick={favoriteHandler} className="heart" id="regheart"/> : <></> }
+       {!isFavorite ? <FaRegHeart  onClick={favoriteHandler} className="heart" id="regheart"/> : <></> }
        </div>
 
    </div>

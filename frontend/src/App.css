@@ -20,3 +20,10 @@ button{
 button:hover {
   background-color: grey; /* Darker shade on hover */
 }
+
+.Navbar{
+  position: fixed; /* Make it stick/fixed */
+  top: -50px; /* Hide the navbar 50 px outside of the top view */
+  transition: top 0.3s; /* Transition effect when sliding down (and up) */
+  background-color:  black;
+}

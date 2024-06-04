@@ -73,8 +73,6 @@ function submitHandler(event) {
             <button type="submit" id="submitter" >Find meals</button>
         </form>
 
-{!user && (<div className="error">Please login to favorite meals</div>)}
-
     </div>
     
   )

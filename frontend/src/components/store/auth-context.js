@@ -9,13 +9,15 @@ const AuthContext = createContext({
   meals: [],
   submitted: false,
   favorites:[],
+  error:"",
   //Placeholder function set the values
   setCals: () => {}, 
   setProtein: () => {},
   setFood: () => {},
   setMeals:()=>{},
   setSubmitted:()=> {},
-  setFavorites:()=>{}
+  setFavorites:()=>{},
+  setError:()=>{}
 });
 
 export function AuthContextProvider(props) {
@@ -26,6 +28,7 @@ export function AuthContextProvider(props) {
   const [submitted, setSubmitted] = useState(false);
 const[meals, setMeals ] = useState([]);
 const[favorites, setFavorites] = useState([]);
+const[error, setError] = useState("");
   //The provider provides context to the the child components
   //The value prop is what is passed through to these children
   return (
@@ -36,12 +39,14 @@ const[favorites, setFavorites] = useState([]);
       meals,
       submitted,
       favorites,
+      error,
       setCals,
       setProtein,
       setFood,
       setMeals,
       setSubmitted,
-      setFavorites
+      setFavorites,
+      setError
     }}>
 
       {props.children}

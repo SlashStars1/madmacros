@@ -16,7 +16,7 @@ function App() {
     <AuthContextProvider>
       <UserAuthContextProvider>
     <div className="App">
-      <NavBar/>
+      <NavBar className="Navbar"/>
     <Routes>
     <Route path="/" element={<Home ></Home>}></Route>
     <Route path="/favorites" element={<FavoritesTwo></FavoritesTwo>}></Route>
