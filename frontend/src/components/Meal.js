@@ -7,7 +7,7 @@ import { useUserAuthContext } from './hooks/useUserAuthContext';
  
 
 const Meal = ({name, serving, calories, protein, food, fav}) => {
-     const{favorites, setFavorites, setError} = useContext(AuthContext);
+     const{favorites, setFavorites, setError, error} = useContext(AuthContext);
     
   const [isFavorite, setIsFavorite] = useState(fav); //sets the favorite state to whatever argument was passed in
 const {user} = useUserAuthContext()
@@ -33,6 +33,7 @@ const {user} = useUserAuthContext()
     }
     else if (!user && !isFavorite){
       setError('You must be logged in to favorite meals')
+      console.log("error")
     }
        
       

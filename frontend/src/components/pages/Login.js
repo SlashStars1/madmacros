@@ -1,13 +1,15 @@
-import React, {useState} from 'react'
+import React, {useContext, useState} from 'react'
 import './Login.css'
 import { useLogin } from '../hooks/useLogin'
 import { useUserAuthContext } from '../hooks/useUserAuthContext'
+import AuthContext from '../store/auth-context';
 import { Link } from "react-router-dom";
 import { FaCircleCheck} from "react-icons/fa6";
 
 const Login = () => {
 
   const {user} = useUserAuthContext()
+  const {setError} = useContext(AuthContext)
     const[email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const {login, error, isLoading} = useLogin() //grab login function from useLogin hook
@@ -18,6 +20,9 @@ const Login = () => {
         
        await login(email, password)
 
+       if (user){
+        setError("");
+       }
     
     }
 

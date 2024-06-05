@@ -83,13 +83,13 @@
     }
   
     .nav-item {
-      height: 60px;
+      height: 20px;
     }
   
     .nav-links {
       text-align: center;
-      padding: 2rem;
-      width: 100%;
+      padding: 5%;
+      width: 50%;
       display: table;
     }
   }
