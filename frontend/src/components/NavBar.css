@@ -43,8 +43,12 @@
   .logoAndTitle {
     height: 90px;
     margin-right: -18%;
+    display: flex;
   }
   
+  .logoAndTitle.hidden{
+    display: none;
+  }
   .logo {
     height: 100%;
     width: 100%;

@@ -30,7 +30,7 @@ const NavBar = () => {
        
       </div>
       <ul className={`nav-menu ${isOpen ? 'active' : ''}`}>
-        <li className="logoAndTitle">
+        <li className={`logoAndTitle ${isOpen ? 'hidden' : ''}`}>
           <img src={burgerdumbell} className="logo" alt="logo" />
         </li>
         <li>
