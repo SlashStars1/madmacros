@@ -30,25 +30,33 @@ const NavBar = () => {
        
       </div>
       
-      <ul className={`nav-menu ${isOpen ? 'active' : ''}`}>
-        <li className={`logoAndTitle ${isOpen ? 'hidden' : ''}`}>
-          <img src={burgerdumbell} className="logo" alt="logo" />
-        </li>
-        <li>
+      <ul className={`title-container ${isOpen ? '' : 'hidden'}`}>
+      <li>
           <Link to="/" style={{ textDecoration: 'none', color: 'black' }}>
             <h1>MAD MACROS</h1>
           </Link>
         </li>
-        <li>
+      </ul>
+      <ul className={`nav-menu ${isOpen ? 'active' : ''}`} onClick={toggleMenu} >
+      <li className={`logoAndTitle ${isOpen ? 'hidden' : ''} item`}>
+          <img src={burgerdumbell} className="logo" alt="logo" />
+        </li>
+        
+        <li className={`title`}>
+          <Link to="/" style={{ textDecoration: 'none', color: 'black' }}>
+            <h1>MAD MACROS</h1>
+          </Link>
+        </li>
+        <li className = "item">
           <Link to="/" style={{ textDecoration: 'none', color: 'black' }}>Home</Link>
         </li>
-        <li>
+        <li className="item">
           <Link to="/favorites" style={{ textDecoration: 'none', color: 'black' }}>
             Favorites <FaHeart className="heart" />
           </Link>
         </li>
         {user && (
-          <div>
+          <div className="item">
             <li>{user.email}</li>
             <li>
               <button onClick={handleClick}>Log Out</button>
@@ -56,7 +64,7 @@ const NavBar = () => {
           </div>
         )}
         {!user && (
-          <div>
+          <div className="item">
             <li>
               <Link to="/login" style={{ textDecoration: 'none', color: 'black' }}>Login</Link>
             </li>

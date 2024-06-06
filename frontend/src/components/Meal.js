@@ -104,8 +104,10 @@ const {user} = useUserAuthContext()
       
       //get a copy of the current favorites
 const filteredFavorites = favorites.filter((fav) => fav.Name !== itemName);
-
   setFavorites(filteredFavorites)
+
+  
+  //have to find id of the fav meal that this maps to 
 }
 
 
