@@ -39,7 +39,7 @@ function submitHandler(event) {
 }
 
   return (
-    <div className="bigDiv">
+    <div className="bigDiv shadow-2xl">
       <br></br>
         <form id="form" onSubmit={submitHandler}>
 

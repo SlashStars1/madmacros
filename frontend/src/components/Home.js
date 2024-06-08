@@ -3,7 +3,7 @@ import Form from './Form'
 import Header from './Header/Header'
 import Menu from './Menu'
 import Popup from 'reactjs-popup'
-
+import "./Home.css"
 export const Home = () => {
 
   const [closed, setClosed] = useState(false);
@@ -13,7 +13,7 @@ export const Home = () => {
   }
 
   return (
-    <div style={{padding: 0, margin:0}}>
+    <div className='home' style={{padding: 0, margin:0, justifyContent:'center', alignItems: 'center'}}>
       {!closed && (<Popup>Login successful <button onClick={closeHandler}>X</button></Popup> )}
         
         <Header></Header>
