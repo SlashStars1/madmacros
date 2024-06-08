@@ -2,10 +2,12 @@ import React,{useContext, useEffect, useState} from 'react'
 import "./Form.css"
 import AuthContext from './store/auth-context';
 import { useUserAuthContext } from './hooks/useUserAuthContext';
+import { FaLessThanEqual } from 'react-icons/fa6';
 const Form = () => {
 
   const { cals, setCals, protein, setProtein, food, setFood, meals, setMeals, submitted, setSubmitted } = useContext(AuthContext); //gets context
-const {user} = useUserAuthContext()
+  const [loading, setLoading] = useState(false); //loading state 
+
   const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:5000';
 
 
@@ -16,6 +18,7 @@ function submitHandler(event) {
     console.log(protein)
     console.log(food)
 
+    setLoading(true); //sets loading state to true 
     
    ///request using query string
 
@@ -31,9 +34,11 @@ function submitHandler(event) {
      .then((data) => {
        setMeals(data);
        console.log(meals);
+       setLoading(false); //set loading state to false because it's done loading
      })
      .catch((error) => {
        console.log(error)
+       setLoading(false);
      });
 
 }
@@ -72,6 +77,9 @@ function submitHandler(event) {
 
             <button onClick={submitHandler} id="submitter" >Find meals</button>
         </form>
+      
+        {(meals.length === 0 && submitted===true && loading===false) && <p>We found no results with this macro combo</p>}
+        {loading && <div><p>Loading..</p></div>}
 
     </div>
     

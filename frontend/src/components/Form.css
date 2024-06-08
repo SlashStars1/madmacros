@@ -43,3 +43,12 @@ button{
     width:25%;
 }
 
+  
+@media screen and (max-width: 960px) {
+#form{
+    max-width: 70%;
+}
+.bigDiv{
+    max-width: 70%;
+}
+}
