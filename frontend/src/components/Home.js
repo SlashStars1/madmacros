@@ -3,7 +3,7 @@ import Form from './Form'
 import Header from './Header/Header'
 import Menu from './Menu'
 import Popup from 'reactjs-popup'
-import "./Home.css"
+
 export const Home = () => {
 
   const [closed, setClosed] = useState(false);

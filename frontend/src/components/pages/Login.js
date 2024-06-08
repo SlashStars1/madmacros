@@ -27,10 +27,10 @@ const Login = () => {
     }
 
   return (
-    <>
+    <div className="form-container">
     {!user ?
       (
-    <form className="login" onSubmit={submitHandler}>
+    <form id="form" className="login shadow-2xl" onSubmit={submitHandler}>
         <h3>Log in</h3>
 
 <div>
@@ -53,7 +53,7 @@ const Login = () => {
 
         <p>Don't have an account? Click here to <Link to="/signup">sign up </Link></p>
     </form>) : (<div className="success"><FaCircleCheck></FaCircleCheck><h2>Log in was successful!</h2> Please return to the Home page to start favoriting meals</div>)}
-   </>
+   </div>
     
   )
 }

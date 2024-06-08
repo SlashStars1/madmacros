@@ -23,7 +23,7 @@ const Signup = () => {
         {user ? (<div className="success"><FaCircleCheck></FaCircleCheck><h2>Sign up was successful!</h2> Please return to the Home page to start favoriting meals</div>)
         : 
         
-    (<form className="signup" onSubmit={submitHandler}>
+    (<form id="form" className="signup shadow-2xl" onSubmit={submitHandler}>
         <h3>Sign up</h3>
 
 <div>

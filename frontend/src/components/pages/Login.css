@@ -1,23 +1,45 @@
 
 div{
-    display: flexbox;
     padding-top: 7%;
     padding: .75%;
     justify-content: space-between;
     
 }
 
+.form-container{
+    display:flex;
+    align-items: center;
+    max-width: 50%;
+    margin: auto;
+    margin-top:5%;
+   
+}
+
+
+#form{
+    display:flex;
+    flex: 1 1 auto;
+    flex-direction:column;
+    border-radius: 5%;
+
+    padding:5%;
+    gap: 1rem;
+    max-width:20rem;
+    align-items: center;
+    margin:auto;
+}
+
+.shadow-2xl {
+    --tw-shadow: 0 25px 50px -12px rgb(0 0 0 / .25);
+    --tw-shadow-colored: 0 25px 50px -12px var(--tw-shadow-color);
+    box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
 
 button{
-    display: flexbox;
-   
     border-radius: 12px;
-    
     cursor: pointer;
     padding: 1%;
-    
     background-color: white;
-
 }
 
 Link{

@@ -41,7 +41,7 @@ function submitHandler(event) {
   return (
     <div className="bigDiv shadow-2xl">
       <br></br>
-        <form id="form" onSubmit={submitHandler}>
+        <form id="form" >
 
             <div>
             <label>Select a restaraunt/cuisine</label>&nbsp;
@@ -70,7 +70,7 @@ function submitHandler(event) {
             </div>
             </div>
 
-            <button type="submit" id="submitter" >Find meals</button>
+            <button onClick={submitHandler} id="submitter" >Find meals</button>
         </form>
 
     </div>

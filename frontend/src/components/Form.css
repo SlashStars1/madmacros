@@ -2,12 +2,11 @@
 
 .bigDiv{
     display:flex;
-   
     align-items: center;
     align-content: center;
     justify-content: center;
     border-radius: 2%;
-    max-width: 50%;
+    max-width: 35%;
     margin: auto;
     margin-top:5%;
    
@@ -19,7 +18,7 @@
     flex-direction:column;
     padding:5%;
     gap: 1rem;
-    max-width:20rem;
+    max-width:40%;
     align-items: center;
 }
 
