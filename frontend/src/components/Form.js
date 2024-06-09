@@ -44,6 +44,7 @@ function submitHandler(event) {
 }
 
   return (
+    <div>
     <div className="bigDiv shadow-2xl">
       <br></br>
         <form id="form" >
@@ -79,8 +80,9 @@ function submitHandler(event) {
         </form>
       
         {(meals.length === 0 && submitted===true && loading===false) && <p>We found no results with this macro combo</p>}
-        {loading && <div><p>Loading..</p></div>}
+        {loading && <div><p>Loading..</p><div className="loader"></div></div>}
 
+    </div>
     </div>
     
   )

@@ -33,8 +33,7 @@ const Menu = () => {
    
     
     )) : <p> </p>} 
-    {(meals.length === 0 && submitted===true)? <p>We found no results with this macro combo</p> :<p></p>}
-  
+    
   </div>
   )
 }
