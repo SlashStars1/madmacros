@@ -5,7 +5,7 @@ const Header = () => {
   return (
     <div className='header'>
         <div className='header-contents'>
-            <h1>Indulgence made macro-friendly</h1>
+            
             
         </div>
 

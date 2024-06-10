@@ -59,6 +59,22 @@
     width: 100%;
   }
   
+  .title-link{
+    display:flex;
+    flex-direction: column;
+    row-gap: 1px;
+
+    margin:0px;
+    padding:-10px;
+  }
+  .title-link h1,
+  .title-link p {
+    margin: 0;
+    padding: 0;
+    line-height: 1.1; /* Adjust as needed */
+  }
+
+
   @media screen and (max-width: 960px) {
     .nav-menu {
       display: none; /* hides menu */

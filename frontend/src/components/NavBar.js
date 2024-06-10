@@ -32,8 +32,9 @@ const NavBar = () => {
       
       <ul className={`title-container ${isOpen ? '' : 'hidden'}`}>
       <li>
-          <Link to="/" style={{ textDecoration: 'none', color: 'black' }}>
+          <Link to="/" style={{ textDecoration: 'none', color: 'black' }} className="title-link">
             <h1>MAD MACROS</h1>
+            <p>Indulgence made macro-friendly</p>
           </Link>
         </li>
       </ul>
@@ -43,8 +44,9 @@ const NavBar = () => {
         </li>
         
         <li className={`title`}>
-          <Link to="/" style={{ textDecoration: 'none', color: 'black' }}>
+          <Link to="/" style={{ textDecoration: 'none', color: 'black' }} className="title-link">
             <h1>MAD MACROS</h1>
+            <p>Indulgence made macro-friendly</p>
           </Link>
         </li>
         <li className = "item">
