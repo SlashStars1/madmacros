@@ -80,9 +80,10 @@ function submitHandler(event) {
         </form>
       
         {(meals.length === 0 && submitted===true && loading===false) && <p>We found no results with this macro combo</p>}
-        {loading && <div><p>Loading..</p><div className="loader"></div></div>}
-
+        
     </div>
+    {loading && <div className="loader-container"><p>Loading..</p><div className="loader"></div></div>}
+
     </div>
     
   )

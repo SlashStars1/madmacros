@@ -52,6 +52,15 @@ button{
     max-width: 70%;
 }
 }
+
+.loader-container{
+    display:flex;
+    align-items:center;
+    align-content: center;
+    justify-content: center;
+    flex-direction: column;
+    margin:auto;
+}
 /*From css loader*/
 /* HTML: <div class="loader"></div> */
 .loader {
